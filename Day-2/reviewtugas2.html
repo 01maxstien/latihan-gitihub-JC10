@@ -1,0 +1,31 @@
+<script>
+    do {
+
+        var jamtiba = parseInt(prompt('Masukkan jam tiba '))
+        var pilihan1 = (prompt('Masukan: \n 1.AM \n 2.PM'))
+        var jampulang = parseInt(prompt('Masukkan Jam Keluar'))
+        var pilihan2 = (prompt('Masukan: \n 1.AM \n 2.PM'))
+
+
+        var totaljam
+
+        if (pilihan1 == pilihan2 && jamtiba == jampulang) {
+            totaljam = 24
+        } else if (pilihan1 == pilihan2) {
+            totaljam = jampulang - jamdatang
+        } else if (pilihan1 != jampulang) {
+            totaljam = (jampulang + 12) - jamdatang
+        }
+        var totalbayar
+        if (totaljam <= 2) {
+            totalbayar = totaljam * 2000
+        } else if (totaljam) {
+            totalbayar = (totaljam - 2) * 500 - 4000
+        }
+
+        alert("biaya parkir: " + totalbayar)
+    }
+
+    while (confirm("mau coba lagi?"))
+    alert(' Thank You ^_^')
+</script>

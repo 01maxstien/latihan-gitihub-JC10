@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <center>
+        <h1>Hello</h1>
+        <input placeholder="Ketik sesuatu" type="text"/>
+        <input type="button" value="Klik dong bro" onclick="btnHandle()">
+    </center>
+    <script>
+        btnHandle = () => {
+            var inputUser = document.getElementsByTagName('input')[0].value
+            document.getElementsByTagName('h1')[0].innerHTML = 'Hello, ' + inputUser
+        }
+    </script> -->
+
+    <left>
+        <div style="background: rgb(151, 84, 84); border: 5px">
+            <h1>Mari menghitung!</h1>
+            <h2>Drawing Tools!</h2>
+            <p>Pilihan Bentuk: <br> 
+                1.Persegi <br>
+                2.Segitiga Siku Kiri<br> 
+                3.Segitiga Siku Kanan<br>
+                4.Segitiga Sama kaki<br>
+                5.Clear Display
+            </p>
+            <input type="number" placeholder="Input angka!">
+            <br>
+            <br>
+            <input type="number" placeholder="Input angka!">
+            <br>
+            <br>
+            <button type="submit" value="Submit"></button>
+        
+            <!-- <input type="button" onclick="siku_kiri()" value="Kurang"> -->
+        </div>
+    </left>
+
+    <script>
+        var selector = document.getElementsByTagName('h1')[0]
+        persegi = () => {
+            var angka1 = document.getElementsByTagName('input')[0].value
+            var angka2 = document.getElementsByTagName('input')[1].value
+            selector.innerHTML = parseInt(angka1) + parseInt(angka2)
+        }
+        siku_kiri = () => {
+            var angka1 = document.getElementsByTagName('input')[0].value
+            var angka2 = document.getElementsByTagName('input')[1].value
+            selector.innerHTML = parseInt(angka1) - parseInt(angka2)
+        }
+        kali = () => {
+            var angka1 = document.getElementsByTagName('input')[0].value
+            var angka2 = document.getElementsByTagName('input')[1].value
+            selector.innerHTML = parseInt(angka1) * parseInt(angka2)
+        }
+        bagi = () => {
+            var angka1 = document.getElementsByTagName('input')[0].value
+            var angka2 = document.getElementsByTagName('input')[1].value
+            selector.innerHTML = parseInt(angka1) / parseInt(angka2)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<script>
+    do {
+
+        var jamtiba = Number(prompt('Masukkan jam tiba '))
+        var pilihan = (prompt('Masukan: \n 1.AM \n 2.PM'))
+        var jampulang = Number(prompt('Masukkan Jam Keluar'))
+        var pilihan = (prompt('Masukan: \n 1.AM \n 2.PM'))
+        var lamaparkir = jampulang - jamtiba
+        var sisaparkir = lamaparkir - 2
+        var total = total
+
+        if (pilihan == 1) {
+            "AM"
+        } else {
+            "PM"
+        }
+
+        if (lamaparkir <= 2) {
+            total = 2000
+        } else {
+            total = (sisaparkir * 500) + 2000
+        }
+        alert("lama parkir: " + lamaparkir + " jam")
+        alert("biaya parkir: " + total)
+    }
+
+    while (confirm("mau coba lagi?"))
+    alert(' Thank You ^_^')
+</script>

@@ -1,0 +1,143 @@
+<script>
+    var produk = ['Jeruk', 'Kiwi', 'Apel']
+    var harga = [20000, 25000, 30000]
+
+
+    //untuk tampil semua barang dari admin
+    function show() {
+        menu = ''
+        for (i = 0; i < produk.length; i++) {
+            menu += i + 1 + '. ' + produk[i] + ' Rp' + harga[i] + '\n'
+        }
+        alert(menu)
+    }
+
+    //input barang admmin
+    input = (item, fee, banyaknya) => {
+        produk.push(item)
+        harga.push(fee)
+        menu = ''
+        for (i = 0; i < produk.length; i++) {
+            menu += i + 1 + '. ' + produk[i] + ' Rp' + harga[i] + '\n'
+        }
+        return menu
+    }
+
+    //hapus barang admin
+    hapus = (item) => {
+        var x = produk.indexOf(item)
+        harga.splice(x, 1)
+        produk.splice(x, 1)
+        alert('Produk telah dihapus!')
+    }
+    //==========================================================================================================================
+
+    var belanja = []
+    var bykBelanja = []
+    var hargaBelanja = []
+
+    pilihBelanjaan = (item, fee) => {
+        if (belanja.includes(item)) {
+            var y = belanja.indexOf(item)
+            bykBelanja[y] += fee
+
+        } else {
+            belanja.push(item)
+            bykBelanja.push(fee)
+            hargaBelanja.push(harga[produk.indexOf(item)])
+
+        }
+
+    }
+
+    keranjangBelanja = () => {
+        menu = ''
+        for (i = 0; i < belanja.length; i++) {
+            menu += (i + 1) + '. ' + belanja[i] + ' = ' + bykBelanja[i] + ' buah' + '\n'
+        }
+        return menu
+
+    }
+
+    total = () => {
+        menu = ''
+        for (i = 0; i < belanja.length; i++) {
+            menu += (i + 1) + '. ' + belanja[i] + ' = Rp' + bykBelanja[i] * hargaBelanja[i] + '\n'
+        }
+        return menu
+    }
+
+
+    totalBelanja = () => {
+        var all = 0
+        for (let i = 0; i < hargaBelanja.length; i++) {
+            all += (hargaBelanja[i] * bykBelanja[i])
+        }
+        return all
+    }
+
+//====================================================================================================================================
+
+    do {
+        do {
+            var depan = prompt('Login Sebagai: \n1. Admin \n2. User \n3. Exit')
+            if (depan == 1) {
+                repeatDepan = true
+                do {
+                    var admin = prompt(
+                        '              ADMIN MENU               \n1. Show Product\n\n2. Input Product\n\n3. Delete Product\n\n4. Back to Main Menu'
+                    )
+                    if (admin == 1) {
+                        repeatDalem = true
+                        show()
+
+                    } else if (admin == 2) {
+                        repeatDalem = true
+                        var inputItem = prompt('Input New Product:')
+                        var inputFee = prompt('Input Harga Product:')
+                        var inputStok = prompt('Input Banyak  Barang')
+                        input(inputItem, inputFee, inputStok)
+                        alert('New Product accepted!')
+
+                    } else if (admin == 3) {
+                        var hapusItem = prompt('Pilih product yang ingin dihapus:')
+                        hapus(hapusItem)
+                        repeatDalem = true
+
+                    } else {
+                        break
+                    }
+
+                } while (repeatDalem)
+            } else if (depan == 2) {
+                repeatDepan = true
+                do{
+                var dalem2 = prompt('========== USER MENU ========== \n1. Go Shopping\n\n2. Show Cart\n\n3. Check Out\n\n4. Back to Main Menu')
+                if (dalem2 == 1){
+                    var daftar = prompt('Pilih barang belanjan kamu:\n ' + show() )
+                    var jumlahBarang = parseInt(prompt('Masukkan jumlah barang belanjaannya:'))
+                    pilihBelanjaan(daftar, jumlahBarang)
+                    repeatDalem2 = true
+
+                } else if (dalem2 == 2){
+                    alert('Barang yang dipilih: \n' + keranjangBelanja())
+                    alert('Belanja Anda:\n' + total())
+                    repeatDalem2 = true
+                } else if (dalem2 == 3){
+                    var last = parseInt(prompt('Total belanja Anda adalah: \nRp' + totalBelanja() + '\n\n\nMasukkan Nominal uang bayar Anda:'))
+                    alert('Kembalian Anda = Rp' + (last - totalBelanja()) )
+                    var belanja = []
+                    var bykBelanja = []
+                    var hargaBelanja = []
+                    repeatDalem2 = true
+
+                } else{
+                    repeatDalem2 = false
+                }
+            } while(repeatDalem2)
+            }
+        } while (repeatDepan)
+
+
+    } while (confirm('Mau ulang lagi?'))
+</script>

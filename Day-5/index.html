@@ -1,0 +1,53 @@
+<script>
+    // function luaspersegi() {
+    //    return a*a
+    // }
+    // var a=parseInt(prompt("masukan panjang sisi persegi anda"))
+    // alert("luas persegi anda adalah : "+luaspersegi(a)+" cm")
+
+    // function luaspersegipanjang() {
+    //     return a * b
+    // }
+    // var a = parseInt(prompt("masukan panjang persegi panjang"))
+    // var b = parseInt(prompt("masukan lebar persegi panjang"))
+    // alert("luas persegi panjang anda adalah : " + luaspersegipanjang(a * b) + " cm2")
+
+
+    do {
+        var menu = prompt(
+            '1. Pilih mau hitung apa? \n a.Segitiga \n b.Trapesium \n c.Persegi Panjang \n d.Detik->Jam')
+        if (menu == "a") {
+            function luassegitiga() {
+                var alas = parseInt(prompt("Masukan alas segitiga"))
+                var tinggi = parseInt(prompt("Masukan tinggi segitiga"))
+                alert("Luas segitiga anda adalah " + (alas * tinggi) / 2 + " cm2")
+            }
+            luassegitiga()
+        } else if (menu == "b") {
+            function luastrapesium() {
+                var sisiatas = parseInt(prompt("Masukan sisi atas trapesium"))
+                var sisibawah = parseInt(prompt("Masukan sisi bawah trapesium"))
+                var tinggi = parseInt(prompt("Masukan tinggi trapesium"))
+                alert("Luas Trapesium anda adalah " + ((sisiatas + sisibawah) * tinggi) / 2 + " cm2")
+            }
+            luastrapesium()
+
+        } else if (menu == "c") {
+            function luaspersegipanjang() {
+                var panjang = parseInt(prompt("Masukan panjang"))
+                var lebar = parseInt(prompt("Masukan lebar"))
+                alert("Luas persegi panjang anda adalah " + panjang * lebar + " cm2")
+            }
+            luaspersegipanjang()
+        } else if (menu == "d") {
+            function convert() {
+
+                var detik = parseInt(prompt("masukan detik"))
+                alert(detik + " detik " + "= " + detik / 3600 + " jam")
+            }
+            convert()
+        }
+    }
+    while (confirm("Mau Coba Lagi?"))
+    alert(' Thank You !')
+</script>

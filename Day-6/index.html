@@ -1,0 +1,148 @@
+<script>
+    //function
+    var ArrnamaBarang = ['Jeruk', 'Kiwi', 'Apel', 'Lemon']
+    var ArrhargaBarang = [5000, 1000, 20000, 3000]
+
+    // admin
+    // =========================================================================================================================================
+    function showproduct() {
+        menu = ''
+        for (let i = 0; i < ArrnamaBarang.length; i++) {
+            menu += (i + 1) + '.' + ArrnamaBarang[i] + ' Rp.' + ArrhargaBarang[i] + '\n'
+        }
+        return menu
+    }
+
+    inputproduct = (namabarang, hargabarang, banyakbarang) => {
+        ArrnamaBarang.push(namabarang)
+        ArrhargaBarang.push(hargabarang)
+        menu = ''
+        for (let i = 0; i < ArrnamaBarang.length; i++) {
+            menu += (i + 1) + '.' + ArrnamaBarang[i] + ' Rp.' + ArrhargaBarang[i] + '\n'
+        }
+        return menu
+    }
+
+    deleteproduct = (item) => {
+
+        var x = ArrnamaBarang.indexOf(item)
+        ArrhargaBarang.splice(ArrnamaBarang.indexOf(x), 1)
+        ArrnamaBarang.splice(ArrnamaBarang.indexOf(x), 1)
+        alert('Barang berhasil dihapus')
+
+    }
+    // ===========================================================================================================================================
+
+    //============================================================================================================================================
+    // USER
+
+    var belanja = []
+    var banyakBelanja = []
+    var hargaBelanja = []
+
+    masukanBelanja = (item, bayar) => {
+        if (belanja.includes(item)) {
+            var b = belanja.indexOf(item)
+            banyakBelanja[b] += bayar
+        } else {
+            belanja.push(item)
+            banyakBelanja.push(bayar)
+            hargaBelanja.push(ArrhargaBarang[ArrnamaBarang.indexOf(item)])
+        }
+    }
+
+    keranjang = () => {
+        menu = ''
+        for (i = 0; i < belanja.length; i++) {
+            menu += belanja[i] + ' = ' + banyakBelanja[i] + ' buah' + '\n'
+        }
+        return menu
+    }
+
+    total = () => {
+        menu = ''
+        for (i = 0; i < belanja.length; i++) {
+            menu += (i + 1) + '. ' + belanja[i] + ' = Rp' + banyakBelanja[i] * hargaBelanja[i] + '\n'
+        }
+        return menu
+    }
+
+    totalBelanja = () => {
+        var all = 0
+        for (let i = 0; i < hargaBelanja.length; i++) {
+            all += (hargaBelanja[i] * banyakBelanja[i])
+        }
+        return all
+    }
+
+    // =================================================================================================================
+
+    // =========================MENU================================================
+    do {
+        do {
+            var menuawal = prompt(
+                'Login as \n 1.Admin \n 2.User \n 3.Exit')
+            if (menuawal == 1) {
+                repeatmenuawal = true
+                do {
+                    var menuadmin = prompt(
+                        '*****ADMIN MENU******\n 1.Show Product\n2.Input Product\n3.Delete Product\n4.Back to Main Menu'
+                    )
+                    if (menuadmin == 1) {
+                        repeatmenuadmin = true
+                        showproduct()
+                        alert(menu)
+                    } else if (menuadmin == 2) {
+                        repeatmenuadmin = true
+                        var inputBarang = prompt('Input Barang:')
+                        var inputHargaBarang = prompt('Input Harga Barang:')
+                        inputproduct(inputBarang, inputHargaBarang)
+                        alert('Barang Sudah ditambahkan')
+                    } else if (menuadmin == 3) {
+                        var hapusBarang = prompt('Masukan barang yang ingin dihapus')
+                        deleteproduct(hapusBarang)
+                        repeatmenuadmin = true
+                    } else {
+                        break
+                    }
+                } while (repeatmenuadmin)
+            } else if (menuawal == 2) {
+                repeatmenuawal = true
+                do {
+                    var menuUser = prompt(
+                        '========== USER MENU ========== \n1. Go Shopping\n2. Show Cart\n3. Check Out\n4. Back to Main Menu'
+                    )
+                    if (menuUser == 1) {
+                        var pilihBarang = prompt('Masukan Barang yang ingin dibeli:\n ' + showproduct())
+                        var jumlahBarang = parseInt(prompt('Masukkan jumlah barang belanjaannya:'))
+                        masukanBelanja(pilihBarang, jumlahBarang)
+                        repeatmenuUser = true
+                    } else if (menuUser == 2) {
+                        if (keranjang().length > 1) {
+                            alert('Barang yang dipilih: \n' + keranjang())
+                            alert('Keranjang Anda:\n' + total())
+                        } else {
+                            alert("tidak ada barang yang dibeli")
+                        }
+                        repeatmenuUser = true
+                    } else if (menuUser == 3) {
+                        
+                        var last = parseInt(prompt('Total belanja Anda adalah: \nRp' + totalBelanja() +
+                            '\n\n\nMasukkan Nominal uang bayar Anda:'))
+                            alert('Uang Kembalian Anda Rp' + (last - totalBelanja()))
+
+                        var belanja = []
+                        var banyakBelanja = []
+                        var hargaBelanja = []
+                        repeatmenuUser = true
+                    } else {
+                        repeatmenuUser = false
+                    }
+                } while (repeatmenuUser)
+            } else if (menuawal == 3) {
+                break
+            }
+        } while (repeatmenuawal)
+    } while (confirm("Mau Coba Lagi?"))
+    alert(' Thank You !')
+</script>
